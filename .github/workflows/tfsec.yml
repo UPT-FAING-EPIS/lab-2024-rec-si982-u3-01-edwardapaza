@@ -1,30 +1,30 @@
-name: Seguridad Infraestructura - TfSec
+name: Terraform Security Scan
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-      - 'infra/**'
-  workflow_dispatch:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   security-scan:
+    name: Run tfsec Security Scan
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # 🔹 INSTALAR TFSEC
-      - name: Setup TfSec
+      - name: Run tfsec
         uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          format: markdown  # Genera el informe en formato Markdown
+          soft_fail: true    # No detiene el workflow aunque haya errores
 
-      # 🔹 EJECUTAR ESCANEO DE SEGURIDAD Y GUARDAR RESULTADOS
-      - name: Ejecutar TfSec y generar reporte
+      - name: Generate tfsec report
         run: |
-          cd infra
-          tfsec --format=markdown --out=tfsec.md . || true
-
-      # 🔹 PUBLICAR REPORTE DE TFSEC EN GITHUB ACTIONS
-      - name: Publicar informe de TfSec en Actions
-        run: |
-          echo "## 📌 Resultados de TfSec" >> $GITHUB_STEP_SUMMARY
-          cat infra/tfsec.md >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 TFSEC Security Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          tfsec --format=markdown . >> $GITHUB_STEP_SUMMARY
