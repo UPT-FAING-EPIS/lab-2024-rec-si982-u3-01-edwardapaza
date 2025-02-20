@@ -17,13 +17,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run tfsec
-        uses: aquasecurity/tfsec-action@v1.0.0
-        with:
-          format: markdown  # Genera el informe en formato Markdown
-          soft_fail: true    # No detiene el workflow aunque haya errores
+      - name: Install tfsec
+        run: |
+          curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest \
+          | grep "browser_download_url.*tfsec-linux-amd64" \
+          | cut -d '"' -f 4 \
+          | wget -qi -
+          chmod +x tfsec-linux-amd64
+          sudo mv tfsec-linux-amd64 /usr/local/bin/tfsec
 
-      - name: Generate tfsec report
+      - name: Run tfsec and generate report
         run: |
           echo "### 📊 TFSEC Security Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
