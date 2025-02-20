@@ -13,17 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 🔹 INSTALAR TFSEC USANDO GITHUB ACTION 🔹
+      # 🔹 INSTALAR TFSEC
       - name: Setup TfSec
         uses: aquasecurity/tfsec-action@v1.0.0
 
-      # 🔹 EJECUTAR ESCANEO DE SEGURIDAD CON TFSEC 🔹
+      # 🔹 EJECUTAR ESCANEO DE SEGURIDAD Y GUARDAR RESULTADOS
       - name: Ejecutar TfSec y generar reporte
         run: |
           cd infra
-          tfsec --format=markdown --out=tfsec.md || true
+          tfsec --format=markdown --out=tfsec.md . || true
 
-      # 🔹 MOSTRAR EL INFORME EN GITHUB ACTIONS 🔹
+      # 🔹 PUBLICAR REPORTE DE TFSEC EN GITHUB ACTIONS
       - name: Publicar informe de TfSec en Actions
         run: |
           echo "## 📌 Resultados de TfSec" >> $GITHUB_STEP_SUMMARY
