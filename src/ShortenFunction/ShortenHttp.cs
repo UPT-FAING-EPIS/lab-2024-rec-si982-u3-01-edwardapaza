@@ -9,12 +9,17 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.OpenApi.Models;
 
 namespace ShortenFunction
 {
     public static class ShortenHttp
     {
         [FunctionName("ShortenHttp")]
+        [OpenApiOperation(operationId: "Run", tags: new[] { "General" })]
+        [OpenApiParameter(name: "name", In = ParameterLocation.Query, Required = false, Type = typeof(string), Description = "Nombre para saludar")]
+        [OpenApiResponseWithBody(statusCode: System.Net.HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "Mensaje de respuesta")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
@@ -35,15 +40,15 @@ namespace ShortenFunction
         }
 
         [FunctionName("GetAll")]
+        [OpenApiOperation(operationId: "GetAll", tags: new[] { "Short URLs" })]
+        [OpenApiResponseWithBody(System.Net.HttpStatusCode.OK, "application/json", typeof(UrlMapping[]), Description = "Lista de URLs acortadas")]
         public static async Task<IActionResult> GetShortUrls(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "shorturl")]
-            HttpRequest req, ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "shorturl")] HttpRequest req, ILogger log)
         {
             log.LogInformation("Getting url list items");
             try
             {
                 var context = new ShortenContext();
-                log.LogInformation("ConectionString: " + context.Database.GetDbConnection().ConnectionString);
                 var urls = await context.UrlMappings.ToListAsync();
                 return new OkObjectResult(urls);
             }
@@ -53,6 +58,16 @@ namespace ShortenFunction
                 return new BadRequestObjectResult("Error al obtener los datos");
             }
         }
+
+        [FunctionName("SwaggerUI")]
+        [OpenApiIgnore]
+        public static IActionResult SwaggerUI(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "swagger/ui")]
+            HttpRequest req)
+        {
+            return new RedirectResult("/api/swagger/ui");
+        }
+
 
         [FunctionName("GetById")]
         public static async Task<IActionResult> GetShortUrlById(
@@ -65,28 +80,38 @@ namespace ShortenFunction
         }
 
         [FunctionName("Create")]
+        [OpenApiOperation(operationId: "CreateShortUrl", tags: new[] { "Short URLs" }, Summary = "Crea una URL acortada")]
+        [OpenApiRequestBody("application/json", typeof(UrlMappingCreateModel), Description = "Datos de la URL acortada")]
+        [OpenApiResponseWithBody(statusCode: System.Net.HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(UrlMapping), Description = "Retorna la URL creada")]
         public static async Task<IActionResult> CreateShortUrl(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "shorturl")]
             HttpRequest req, ILogger log)
         {
-            log.LogInformation("Creating a new todo list item");
+            log.LogInformation("Creating a new short URL");
             var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var input = JsonConvert.DeserializeObject<UrlMappingCreateModel>(requestBody);
+
             var url = new UrlMapping { OriginalUrl = input.OriginalUrl, ShortenedUrl = input.ShortenedUrl };
             var context = new ShortenContext();
             await context.UrlMappings.AddAsync(url);
             await context.SaveChangesAsync();
+
             return new OkObjectResult(url);
         }
 
         [FunctionName("Update")]
+        [OpenApiOperation(operationId: "UpdateShortUrl", tags: new[] { "Short URLs" }, Summary = "Actualiza una URL acortada")]
+        [OpenApiParameter(name: "id", In = ParameterLocation.Path, Required = true, Type = typeof(int), Description = "ID de la URL a actualizar")]
+        [OpenApiRequestBody("application/json", typeof(UrlMappingCreateModel), Description = "Datos actualizados de la URL acortada")]
+        [OpenApiResponseWithBody(statusCode: System.Net.HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(UrlMapping), Description = "Retorna la URL actualizada")]
         public static async Task<IActionResult> UpdateShortUrl(
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "shorturl/{id}")]
             HttpRequest req, ILogger log, int id)
         {
-            log.LogInformation("Updating a todo list item");
+            log.LogInformation($"Updating URL with ID {id}");
             var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             var input = JsonConvert.DeserializeObject<UrlMappingCreateModel>(requestBody);
+
             var context = new ShortenContext();
             var url = await context.UrlMappings.FindAsync(id);
             if (url == null)
@@ -94,18 +119,23 @@ namespace ShortenFunction
                 log.LogWarning($"Item {id} not found");
                 return new NotFoundResult();
             }
+
             url.OriginalUrl = input.OriginalUrl;
             url.ShortenedUrl = input.ShortenedUrl;
             await context.SaveChangesAsync();
+
             return new OkObjectResult(url);
         }
 
         [FunctionName("Delete")]
+        [OpenApiOperation(operationId: "DeleteShortUrl", tags: new[] { "Short URLs" }, Summary = "Elimina una URL acortada")]
+        [OpenApiParameter(name: "id", In = ParameterLocation.Path, Required = true, Type = typeof(int), Description = "ID de la URL a eliminar")]
+        [OpenApiResponseWithBody(statusCode: System.Net.HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Description = "Mensaje de éxito")]
         public static async Task<IActionResult> DeleteShortUrl(
             [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "shorturl/{id}")]
             HttpRequest req, ILogger log, int id)
         {
-            log.LogInformation("Deleting a todo list item");
+            log.LogInformation($"Deleting URL with ID {id}");
             var context = new ShortenContext();
             var url = await context.UrlMappings.FindAsync(id);
             if (url == null)
@@ -113,9 +143,10 @@ namespace ShortenFunction
                 log.LogWarning($"Item {id} not found");
                 return new NotFoundResult();
             }
+
             context.UrlMappings.Remove(url);
             await context.SaveChangesAsync();
-            return new OkResult();
+            return new OkObjectResult($"URL with ID {id} deleted successfully.");
         }
 
     }   
