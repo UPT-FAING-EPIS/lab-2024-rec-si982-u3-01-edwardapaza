@@ -53,7 +53,7 @@ jobs:
 
     - name: 🔹 Configurar settings en Azure Functions
       run: |
-        az webapp config connection-string update -g upt-arg-153 -n upt-afn-153 -t SQLAzure --settings ShortenDB='Data Source=upt-dbs-153.database.windows.net;User ID=${{ secrets.SQL_USER }};Password=${{ secrets.SQL_PASS }};Database=shorten'
+        az webapp config connection-string set -g upt-arg-153 -n upt-afn-153 -t SQLAzure --settings ShortenDB='Data Source=upt-dbs-153.database.windows.net;User ID=${{ secrets.SQL_USER }};Password=${{ secrets.SQL_PASS }};Database=shorten'
 
     - name: 🔹 Desplegar en Azure Functions
       run: |
