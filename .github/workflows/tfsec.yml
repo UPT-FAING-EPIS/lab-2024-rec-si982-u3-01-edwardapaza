@@ -13,13 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 🔹 INSTALAR TFSEC 🔹
+      # 🔹 INSTALAR TFSEC USANDO GITHUB ACTION 🔹
       - name: Setup TfSec
-        run: |
-          curl -L -o /tmp/tfsec.tar.gz "https://github.com/aquasecurity/tfsec/releases/latest/download/tfsec_linux_amd64.tar.gz"
-          tar -xzvf /tmp/tfsec.tar.gz -C /tmp
-          mv -v /tmp/tfsec /usr/local/bin/tfsec
-          chmod +x /usr/local/bin/tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
 
       # 🔹 EJECUTAR ESCANEO DE SEGURIDAD CON TFSEC 🔹
       - name: Ejecutar TfSec y generar reporte
