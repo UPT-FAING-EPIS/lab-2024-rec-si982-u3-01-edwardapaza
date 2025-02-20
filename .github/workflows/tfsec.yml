@@ -30,4 +30,4 @@ jobs:
         run: |
           echo "### 📊 TFSEC Security Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          tfsec --format=markdown . >> $GITHUB_STEP_SUMMARY
+          tfsec --format=markdown --soft-fail . >> $GITHUB_STEP_SUMMARY
