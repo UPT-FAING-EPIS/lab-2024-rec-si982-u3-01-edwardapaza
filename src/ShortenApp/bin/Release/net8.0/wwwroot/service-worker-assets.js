@@ -5,7 +5,7 @@
       "url": "css\/app.css"
     },
     {
-      "hash": "sha256-z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=",
+      "hash": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7\/p4nS6D\/0=",
       "url": "css\/bootstrap\/bootstrap.min.css"
     },
     {
@@ -37,12 +37,12 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-n5sYTmtOXprwtaCOIm\/MYFPz5birFGLcarvoZP+Nn3w=",
-      "url": "ShortenApp.styles.css"
-    },
-    {
       "hash": "sha256-gvHfnndfEu1tRf0rFb5988rWq7ITIotOaE8+AMbKYbc=",
       "url": "_framework\/blazor.webassembly.js"
+    },
+    {
+      "hash": "sha256-n5sYTmtOXprwtaCOIm\/MYFPz5birFGLcarvoZP+Nn3w=",
+      "url": "ShortenApp.styles.css"
     },
     {
       "hash": "sha256-W1OqRV83imd3SG\/v4PAlCa5m\/3RA9n5ysXT7G46jKKc=",
@@ -809,7 +809,7 @@
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
-      "hash": "sha256-E+6wwuwtNy8K\/gCtI5FMmOTt4o\/7IvTeT9BfPazeNpM=",
+      "hash": "sha256-5IHpHFpmwdH42yqk2GBS8\/Q6tCJwws2ABCP+nP8zgqI=",
       "url": "_framework\/dotnet.js"
     },
     {
@@ -817,16 +817,8 @@
       "url": "_framework\/dotnet.js.map"
     },
     {
-      "hash": "sha256-VdKq87\/z5NIxZKmuM+fv38XF+RcEb\/bg3jVBwQSfwP4=",
-      "url": "_framework\/dotnet.native.8.0.11.twv41u2c4a.js"
-    },
-    {
       "hash": "sha256-1NJsNYy4gznvjVwzcG5w3Cl50enK1KB\/7cKBMY+6jz4=",
       "url": "_framework\/dotnet.native.wasm"
-    },
-    {
-      "hash": "sha256-nam8JTYKjhMKOTg6+FlihYP6JpWPGe3jjM9fiUFWzhY=",
-      "url": "_framework\/dotnet.runtime.8.0.11.om69cnkeob.js"
     },
     {
       "hash": "sha256-tacuaI1XaIOOO3ZJ8se0JwaY6hwOxP5sIPF\/x\/AlFow=",
@@ -855,7 +847,15 @@
     {
       "hash": "sha256-fRdAHCoKPXUmM3pgkGq\/dgAmapqntSxEqk9nIE6tvAM=",
       "url": "_framework\/blazor.boot.json"
+    },
+    {
+      "hash": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8=",
+      "url": "_framework\/dotnet.native.8.0.12.ov4uifpsal.js"
+    },
+    {
+      "hash": "sha256-aTAnT1r\/EAWev8oI\/mTFI9nH3RsfA5M822bNiGhok6U=",
+      "url": "_framework\/dotnet.runtime.8.0.12.98eqyzv3d6.js"
     }
   ],
-  "version": "EOkHxxsw"
+  "version": "HCv6JFkm"
 };

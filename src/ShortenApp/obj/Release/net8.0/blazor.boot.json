@@ -1,15 +1,15 @@
 {
   "mainAssemblyName": "ShortenApp",
   "resources": {
-    "hash": "sha256-ZIFRj2C+cSU7GiI/vWhdLIh1lkcbsqxUVFMrQ7NAPfQ=",
+    "hash": "sha256-NJlaqbtQkoEewxJ8zB9Ry+D75GTPlaLtjil44HdGO7M=",
     "jsModuleNative": {
-      "dotnet.native.8.0.11.twv41u2c4a.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
+      "dotnet.native.8.0.12.ov4uifpsal.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.8.0.11.om69cnkeob.js": "sha256-nam8JTYKjhMKOTg6+FlihYP6JpWPGe3jjM9fiUFWzhY="
+      "dotnet.runtime.8.0.12.98eqyzv3d6.js": "sha256-aTAnT1r/EAWev8oI/mTFI9nH3RsfA5M822bNiGhok6U="
     },
     "wasmNative": {
-      "dotnet.native.wasm": "sha256-1NJsNYy4gznvjVwzcG5w3Cl50enK1KB/7cKBMY+6jz4="
+      "dotnet.native.wasm": "sha256-4X9eav+Ak45oe3jDiM7H2gSxg1ZRzmhn9QfZURenUbE="
     },
     "icu": {
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-04e4k5XU8HWGB/dq/2+j84xzzGPflTs0IYWI0OxogVc=",
       "netstandard.wasm": "sha256-gnGZURPnoSmjXuYNCOJi5tt8qn2LRImWgue1Ru3/TDQ=",
       "System.Private.CoreLib.wasm": "sha256-6w3jYr0arcp8jnt4aeqh+AmqrLA6q7jl9rQYAwLzE0M=",
-      "ShortenApp.wasm": "sha256-bZM3crofEWYdwNvi4+jLjjoY3pg6q4U0JoGDsn6ZF7g="
+      "ShortenApp.wasm": "sha256-fp2RPfeS2rNdVfWZxkYPNpFS3/lnyRmFU/Oh88XXj/0="
     },
     "pdb": {
-      "ShortenApp.pdb": "sha256-3vkqKTTAnhRXT5ZCXwBpjZUCJ8qxD/1QDMGg3D4u5WE="
+      "ShortenApp.pdb": "sha256-gZaLpBFW24Tj1gt++I1370mV4OAR+2kXVrO5MxWCX+4="
     }
   },
   "cacheBootResources": true,
