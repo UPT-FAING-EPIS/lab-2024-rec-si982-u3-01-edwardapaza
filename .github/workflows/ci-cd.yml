@@ -1,36 +1,60 @@
-name: Deploy to Azure Static Web Apps
+name: Deploy Blazor + Azure Functions
 
 on:
   push:
     branches:
-      - main  # Cambia si usas otra rama principal
+      - main  # Cambia esto si usas otra rama principal
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: 🔹 Checkout código
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: 🔹 Configurar .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x  # Asegúrate de usar la versión correcta
+        dotnet-version: 8.0.x  # Usa la versión correcta
 
+    # 🚀 DEPLOY DEL FRONTEND (Blazor WASM en Azure Static Web Apps)
     - name: 🔹 Restaurar dependencias
-      run: dotnet restore
-      working-directory: src/ShortenApp  # Ajusta según tu estructura
+      run: dotnet restore src/ShortenApp
 
-    - name: 🔹 Compilar y publicar Blazor WASM
-      run: dotnet publish -c Release -o publish
-      working-directory: src/ShortenApp  # Ajusta según tu estructura
-
-    - name: 🔹 Instalar Azure Static Web Apps CLI
-      run: npm install -g @azure/static-web-apps-cli
+    - name: 🔹 Publicar Blazor WASM
+      run: dotnet publish src/ShortenApp -c Release -o publish
 
     - name: 🔹 Desplegar en Azure Static Web Apps
-      run: swa deploy ./publish/wwwroot -n upt-swa-153 --env production
-      working-directory: src/ShortenApp  # Ajusta según tu estructura
-      env:
-        AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_CREDENTIALS }}
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_CREDENTIALS }}
+        action: "upload"
+        app_location: "publish/wwwroot"
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy  # Espera a que termine el frontend
+    steps:
+    - name: 🔹 Checkout código
+      uses: actions/checkout@v3
+
+    - name: 🔹 Configurar Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # 🚀 DEPLOY DEL BACKEND (Azure Functions en Azure Function Apps)
+    - name: 🔹 Publicar Azure Functions
+      run: |
+        dotnet publish src/ShortenFunction -c Release -o publish_backend
+        cd publish_backend
+        zip -r functionapp.zip .
+
+    - name: 🔹 Configurar settings en Azure Functions
+      run: |
+        az functionapp config appsettings set -g upt-arg-153 -n upt-afn-153 --settings FUNCTIONS_INPROC_NET8_ENABLED=1
+        az webapp config connection-string set -g upt-arg-153 -n upt-afn-153 -t sqlazure --settings ShortenDB='Data Source=upt-dbs-153.database.windows.net;User ID=${{ secrets.SQL_USER }};Password=${{ secrets.SQL_PASS }};Database=shorten'
+
+    - name: 🔹 Desplegar en Azure Functions
+      run: |
+        az functionapp deployment source config-zip -g upt-arg-153 -n upt-afn-153 --src publish_backend/functionapp.zip --verbose
