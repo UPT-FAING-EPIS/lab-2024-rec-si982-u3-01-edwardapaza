@@ -1,0 +1,34 @@
+name: Seguridad Infraestructura - TfSec
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'infra/**'
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 🔹 INSTALAR TFSEC 🔹
+      - name: Setup TfSec
+        run: |
+          curl -L -o /tmp/tfsec.tar.gz "https://github.com/aquasecurity/tfsec/releases/latest/download/tfsec_linux_amd64.tar.gz"
+          tar -xzvf /tmp/tfsec.tar.gz -C /tmp
+          mv -v /tmp/tfsec /usr/local/bin/tfsec
+          chmod +x /usr/local/bin/tfsec
+
+      # 🔹 EJECUTAR ESCANEO DE SEGURIDAD CON TFSEC 🔹
+      - name: Ejecutar TfSec y generar reporte
+        run: |
+          cd infra
+          tfsec --format=markdown --out=tfsec.md || true
+
+      # 🔹 MOSTRAR EL INFORME EN GITHUB ACTIONS 🔹
+      - name: Publicar informe de TfSec en Actions
+        run: |
+          echo "## 📌 Resultados de TfSec" >> $GITHUB_STEP_SUMMARY
+          cat infra/tfsec.md >> $GITHUB_STEP_SUMMARY
