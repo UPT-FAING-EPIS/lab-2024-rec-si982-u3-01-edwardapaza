@@ -558,6 +558,8 @@ az functionapp deployment source config-zip -g upt-arg-373 -n upt-afn-373 --src 
 7. En el Navegador, abrir una nueva pestaña e ingresar a la url https://upt-afn-XXX.azurewebsites.net/api/shorturl
 >Donde: XXX, id de su azure function
 
+![image](https://github.com/user-attachments/assets/9e7377b8-9b06-40f7-b290-7abe0e4fc1b5)
+
 ### CONSTRUCCION DE LA APLICACION - FRONTEND
 
 8. En el Terminal, volver a la carpeta src, y ejecutar los siguientes comandos para crear la aplicación web estatica
@@ -672,13 +674,224 @@ swa deploy ./publish/wwwroot -n upt-swa-XXX --env production
 
 15. En el Terminal, se visualizara el link de la Webapp Estatica, hacer click en el para verificar los resultados.
 
-![image](https://github.com/user-attachments/assets/463ed443-3843-44a1-95bf-c7a9aa999666)
+![image](https://github.com/user-attachments/assets/13fded83-9b89-4035-9249-230cf67f8a7e)
 
 
 ## ACTIVIDADES ENCARGADAS
 
 1. Generar y subir el diagrama de infraestructura al repositorio como lab_02.png y el reporte de metricas. (2ptos)
+
+![image](https://github.com/user-attachments/assets/7a25e5ad-47d6-41e0-b2d1-7495aa565064)
+
+<details><summary>Click to expand: REPORTE METRICAS</summary>
+ 
+ ```
+tput table;1f35d681-196a-490a-a007-c9b42a25d9baTimestamp             Name      Total  
+--------------------  --------  -------
+2025-02-20T12:00:00Z  Requests  0.0    
+2025-02-20T12:01:00Z  Requests  0.0    
+2025-02-20T12:02:00Z  Requests  0.0    
+2025-02-20T12:03:00Z  Requests  0.0    
+2025-02-20T12:04:00Z  Requests  0.0    
+2025-02-20T12:05:00Z  Requests  0.0    
+2025-02-20T12:06:00Z  Requests  0.0    
+2025-02-20T12:07:00Z  Requests  0.0    
+2025-02-20T12:08:00Z  Requests  0.0    
+2025-02-20T12:09:00Z  Requests  0.0    
+2025-02-20T12:10:00Z  Requests  0.0    
+2025-02-20T12:11:00Z  Requests  0.0    
+2025-02-20T12:12:00Z  Requests  0.0    
+2025-02-20T12:13:00Z  Requests  0.0    
+2025-02-20T12:14:00Z  Requests  0.0    
+2025-02-20T12:15:00Z  Requests  0.0    
+2025-02-20T12:16:00Z  Requests  0.0    
+2025-02-20T12:17:00Z  Requests  0.0    
+2025-02-20T12:18:00Z  Requests  0.0    
+2025-02-20T12:19:00Z  Requests  0.0    
+2025-02-20T12:20:00Z  Requests  0.0    
+2025-02-20T12:21:00Z  Requests  0.0    
+2025-02-20T12:22:00Z  Requests  0.0    
+2025-02-20T12:23:00Z  Requests  0.0
+2025-02-20T12:24:00Z  Requests  0.0
+2025-02-20T12:25:00Z  Requests  0.0
+2025-02-20T12:26:00Z  Requests  0.0
+2025-02-20T12:27:00Z  Requests  0.0
+2025-02-20T12:28:00Z  Requests  0.0
+2025-02-20T12:29:00Z  Requests  0.0
+2025-02-20T12:30:00Z  Requests  0.0
+2025-02-20T12:31:00Z  Requests  0.0
+2025-02-20T12:32:00Z  Requests  0.0
+2025-02-20T12:33:00Z  Requests  0.0
+2025-02-20T12:34:00Z  Requests  0.0
+2025-02-20T12:35:00Z  Requests  0.0
+2025-02-20T12:36:00Z  Requests  0.0
+2025-02-20T12:37:00Z  Requests  0.0
+2025-02-20T12:38:00Z  Requests  0.0
+2025-02-20T12:39:00Z  Requests  0.0
+2025-02-20T12:40:00Z  Requests  0.0
+2025-02-20T12:41:00Z  Requests  0.0
+2025-02-20T12:42:00Z  Requests  0.0
+2025-02-20T12:43:00Z  Requests  0.0
+2025-02-20T12:44:00Z  Requests  0.0
+2025-02-20T12:45:00Z  Requests  0.0
+2025-02-20T12:46:00Z  Requests  0.0
+2025-02-20T12:47:00Z  Requests  0.0
+2025-02-20T12:48:00Z  Requests  0.0
+2025-02-20T12:49:00Z  Requests  0.0
+2025-02-20T12:50:00Z  Requests  0.0
+2025-02-20T12:51:00Z  Requests  0.0
+2025-02-20T12:52:00Z  Requests  0.0
+2025-02-20T12:53:00Z  Requests  0.0
+2025-02-20T12:54:00Z  Requests  0.0
+2025-02-20T12:55:00Z  Requests  0.0
+2025-02-20T12:56:00Z  Requests  0.0
+2025-02-20T12:57:00Z  Requests  0.0
+2025-02-20T12:58:00Z  Requests  0.0
+2025-02-20T12:59:00Z  Requests  0.0
+2025-02-20T13:00:00Z  Requests  0.0
+2025-02-20T13:01:00Z  Requests  0.0
+2025-02-20T13:02:00Z  Requests  0.0
+2025-02-20T13:03:00Z  Requests  0.0
+2025-02-20T13:04:00Z  Requests  0.0
+2025-02-20T13:05:00Z  Requests  0.0
+2025-02-20T13:06:00Z  Requests  0.0
+2025-02-20T13:07:00Z  Requests  0.0
+2025-02-20T13:08:00Z  Requests  0.0
+2025-02-20T13:09:00Z  Requests  0.0
+2025-02-20T13:10:00Z  Requests  0.0
+2025-02-20T13:11:00Z  Requests  0.0
+2025-02-20T13:12:00Z  Requests  0.0
+2025-02-20T13:13:00Z  Requests  0.0
+2025-02-20T13:14:00Z  Requests  0.0
+2025-02-20T13:15:00Z  Requests  0.0
+2025-02-20T13:16:00Z  Requests  0.0
+2025-02-20T13:17:00Z  Requests  0.0
+2025-02-20T13:18:00Z  Requests  0.0
+2025-02-20T13:19:00Z  Requests  0.0
+2025-02-20T13:20:00Z  Requests  0.0
+2025-02-20T13:21:00Z  Requests  0.0
+2025-02-20T13:22:00Z  Requests  0.0
+2025-02-20T13:23:00Z  Requests  0.0
+2025-02-20T13:24:00Z  Requests  0.0
+2025-02-20T13:25:00Z  Requests  0.0
+2025-02-20T13:26:00Z  Requests  0.0
+2025-02-20T13:27:00Z  Requests  0.0
+2025-02-20T13:28:00Z  Requests  0.0
+2025-02-20T13:29:00Z  Requests  0.0
+2025-02-20T13:30:00Z  Requests  0.0
+2025-02-20T13:31:00Z  Requests  0.0
+2025-02-20T13:32:00Z  Requests  0.0
+2025-02-20T13:33:00Z  Requests  0.0
+2025-02-20T13:34:00Z  Requests  0.0
+2025-02-20T13:35:00Z  Requests  0.0
+2025-02-20T13:36:00Z  Requests  0.0
+2025-02-20T13:37:00Z  Requests  0.0
+2025-02-20T13:38:00Z  Requests  0.0
+2025-02-20T13:39:00Z  Requests  0.0
+2025-02-20T13:40:00Z  Requests  0.0
+2025-02-20T13:41:00Z  Requests  0.0
+2025-02-20T13:42:00Z  Requests  0.0
+2025-02-20T13:43:00Z  Requests  0.0
+2025-02-20T13:44:00Z  Requests  0.0
+2025-02-20T13:45:00Z  Requests  0.0
+2025-02-20T13:46:00Z  Requests  0.0
+2025-02-20T13:47:00Z  Requests  0.0
+2025-02-20T13:48:00Z  Requests  0.0
+2025-02-20T13:49:00Z  Requests  0.0
+2025-02-20T13:50:00Z  Requests  0.0
+2025-02-20T13:51:00Z  Requests  0.0
+2025-02-20T13:52:00Z  Requests  0.0
+2025-02-20T13:53:00Z  Requests  0.0
+2025-02-20T13:54:00Z  Requests  0.0
+2025-02-20T13:55:00Z  Requests  0.0
+2025-02-20T13:56:00Z  Requests  0.0
+2025-02-20T13:57:00Z  Requests  0.0
+2025-02-20T13:58:00Z  Requests  0.0
+2025-02-20T13:59:00Z  Requests  0.0
+2025-02-20T14:00:00Z  Requests  0.0
+2025-02-20T14:01:00Z  Requests  0.0
+2025-02-20T14:02:00Z  Requests  0.0
+2025-02-20T14:03:00Z  Requests  0.0
+2025-02-20T14:04:00Z  Requests  0.0
+2025-02-20T14:05:00Z  Requests  0.0
+2025-02-20T14:06:00Z  Requests  0.0
+2025-02-20T14:07:00Z  Requests  0.0
+2025-02-20T14:08:00Z  Requests  0.0
+2025-02-20T14:09:00Z  Requests  0.0
+2025-02-20T14:10:00Z  Requests  0.0
+2025-02-20T14:11:00Z  Requests  0.0
+2025-02-20T14:12:00Z  Requests  0.0
+2025-02-20T14:13:00Z  Requests  0.0
+2025-02-20T14:14:00Z  Requests  0.0
+2025-02-20T14:15:00Z  Requests  0.0
+2025-02-20T14:16:00Z  Requests  0.0
+2025-02-20T14:17:00Z  Requests  0.0
+2025-02-20T14:18:00Z  Requests  0.0
+2025-02-20T14:19:00Z  Requests  0.0
+2025-02-20T14:20:00Z  Requests  0.0
+2025-02-20T14:21:00Z  Requests  0.0
+2025-02-20T14:22:00Z  Requests  0.0
+2025-02-20T14:23:00Z  Requests  0.0
+2025-02-20T14:24:00Z  Requests  0.0
+2025-02-20T14:25:00Z  Requests  0.0
+2025-02-20T14:26:00Z  Requests  0.0
+2025-02-20T14:27:00Z  Requests  0.0
+2025-02-20T14:28:00Z  Requests  0.0
+2025-02-20T14:29:00Z  Requests  0.0
+2025-02-20T14:30:00Z  Requests  0.0
+2025-02-20T14:31:00Z  Requests  0.0
+2025-02-20T14:32:00Z  Requests  0.0
+2025-02-20T14:33:00Z  Requests  0.0
+2025-02-20T14:34:00Z  Requests  0.0
+2025-02-20T14:35:00Z  Requests  0.0
+2025-02-20T14:36:00Z  Requests  0.0
+2025-02-20T14:37:00Z  Requests  0.0
+2025-02-20T14:38:00Z  Requests  0.0
+2025-02-20T14:39:00Z  Requests  0.0
+2025-02-20T14:40:00Z  Requests  0.0
+2025-02-20T14:41:00Z  Requests  0.0
+2025-02-20T14:42:00Z  Requests  0.0
+2025-02-20T14:43:00Z  Requests  0.0
+2025-02-20T14:44:00Z  Requests  0.0
+2025-02-20T14:45:00Z  Requests  0.0
+2025-02-20T14:46:00Z  Requests  0.0
+2025-02-20T14:47:00Z  Requests  0.0
+2025-02-20T14:48:00Z  Requests  0.0
+2025-02-20T14:49:00Z  Requests  0.0
+2025-02-20T14:50:00Z  Requests  0.0
+2025-02-20T14:51:00Z  Requests  0.0
+2025-02-20T14:52:00Z  Requests  0.0
+2025-02-20T14:53:00Z  Requests  0.0
+2025-02-20T14:54:00Z  Requests  0.0
+2025-02-20T14:55:00Z  Requests  0.0
+2025-02-20T14:56:00Z  Requests  0.0
+2025-02-20T14:57:00Z  Requests  0.0
+2025-02-20T14:58:00Z  Requests  0.0
+2025-02-20T14:59:00Z  Requests  0.0
+2025-02-20T15:00:00Z  Requests  0.0
+2025-02-20T15:01:00Z  Requests  0.0
+2025-02-20T15:02:00Z  Requests  0.0
+2025-02-20T15:03:00Z  Requests  0.0
+PS C:\Users\Edward\Desktop\ultimolab\lab-2024-rec-si982-u3-01-edwardapaza>
+
+```
+</details>
+
 2. Realizar el escaneo del codigo de terraform utilizando TfSec o Trivy dentro del Github Action. (2ptos)
+
+![image](https://github.com/user-attachments/assets/9f1ad62f-55eb-4d30-8d42-6c60b844ef54)
+
 3. En la aplicación completar con las demas funcionalidades, de crear, actualizar y eliminar (4ptos)
+
+![image](https://github.com/user-attachments/assets/7ef1dc5e-e8e1-4b56-a251-6428c3372440)
+
 4. Realizar el escaneo de vulnerabilidad con SonarCloud y Semgrep dentro del Github Action correspondiente. (2ptos)
+
+
 5. Generar un Action para el despliegue de las dos aplicaciones, backend y frntend, incluyendo todo lo anterior. (4ptos)
+
+![image](https://github.com/user-attachments/assets/98b5ea02-8767-45ed-945a-42ce99882e18)
+
+![image](https://github.com/user-attachments/assets/1c5f51e0-fd89-431e-9f81-78693b15c999)
+
+![image](https://github.com/user-attachments/assets/6a55c052-4c1c-459e-9432-c5d36baf2746)
