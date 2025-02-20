@@ -890,6 +890,8 @@ PS C:\Users\Edward\Desktop\ultimolab\lab-2024-rec-si982-u3-01-edwardapaza>
 
 5. Generar un Action para el despliegue de las dos aplicaciones, backend y frntend, incluyendo todo lo anterior. (4ptos)
 
+## https://upt-afn-153.azurewebsites.net/api/swagger/ui
+
 ![image](https://github.com/user-attachments/assets/98b5ea02-8767-45ed-945a-42ce99882e18)
 
 ![image](https://github.com/user-attachments/assets/1c5f51e0-fd89-431e-9f81-78693b15c999)
