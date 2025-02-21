@@ -1878,11 +1878,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Edward\\Desktop\\ultimolab\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\ShortenApp.csproj",
+      "projectUniqueName": "C:\\Users\\Edward\\Desktop\\pro\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\ShortenApp.csproj",
       "projectName": "ShortenApp",
-      "projectPath": "C:\\Users\\Edward\\Desktop\\ultimolab\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\ShortenApp.csproj",
+      "projectPath": "C:\\Users\\Edward\\Desktop\\pro\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\ShortenApp.csproj",
       "packagesPath": "C:\\Users\\Edward\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Edward\\Desktop\\ultimolab\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\obj\\",
+      "outputPath": "C:\\Users\\Edward\\Desktop\\pro\\lab-2024-rec-si982-u3-01-edwardapaza\\src\\ShortenApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
